@@ -1,0 +1,17 @@
+<?php
+include "koneksi.php";
+$perintah="SELECT * FROM articles ORDER BY id DESC";
+$hasil=mysql_db_query($dbname,$perintah);
+echo("<h2>List Artikel</h2>
+<br><UL>
+");
+while ($row=mysql_fetch_array($hasil))
+{
+echo("<LI>$row[1] &nbsp;$row[2] &nbsp; $row[waktu] &nbsp;
+<a href=\"edit_article.php?id=$row[0]\">Edit</a>&nbsp;
+<a href=\"delete.php?id=$row[0]\">Hapus</a></LI><br>");
+}
+echo("</table>");
+echo "<br><a href=\"form_artikel.php\">Tambah</a>";
+echo "<br><a href=\"adminpanel.php\">Admin Panel</a>";
+?>
